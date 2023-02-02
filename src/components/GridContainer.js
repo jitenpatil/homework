@@ -1,5 +1,5 @@
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addCampaigns } from "../actions/index";
 import React, { useEffect, useState } from 'react';
 import QuickSearchToolbar from "./QuickSearchToolbar";
@@ -62,9 +62,10 @@ function getNamesFromIds(campaigns, users){
 
 const GridContainer = () => {
     const dispatch = useDispatch();
+    const campaigns = useSelector((state)=>state.addCampaignsReducer.campaigns);
 
     const [rows, setRows] = useState([]);
-    const [campaigns, setCampaigns] = useState([
+    /*const [campaigns, setCampaigns] = useState([
         {"id":1,"name":"Divavu","startDate":"9/19/2017","endDate":"3/9/2018","Budget":88377, "userId": 3},
         {"id":2,"name":"Jaxspan","startDate":"11/21/2017","endDate":"2/21/2023","Budget":608715, "userId": 6},
         {"id":3,"name":"Miboo","startDate":"11/1/2017","endDate":"6/20/2017","Budget":239507, "userId": 7},
@@ -75,7 +76,7 @@ const GridContainer = () => {
         {"id":8,"name":"Rhyzio","startDate":"10/13/2017","endDate":"1/25/2018","Budget":272552, "userId": 4},
         {"id":9,"name":"Zoomcast","startDate":"9/6/2017","endDate":"11/10/2017","Budget":301919, "userId": 8},
         {"id":10,"name":"Realbridge","startDate":"3/5/2018","endDate":"10/2/2017","Budget":505602, "userId": 5}
-    ]);
+    ]);*/
 
     
 
@@ -96,7 +97,7 @@ const GridContainer = () => {
             console.log(allrows);
             setRows(allrows);
         })
-    },[]);  
+    },[campaigns]);  
 
     /*Global Method for testing*/
     window.addValue = (value) => {
@@ -106,7 +107,7 @@ const GridContainer = () => {
 
     return <>
         <div>
-            <div style={{ height: 420, width: '100%' }}>
+            <div style={{ height: 520, width: '100%' }}>
                 <DataGrid 
                     rows={rows} 
                     columns={columns}

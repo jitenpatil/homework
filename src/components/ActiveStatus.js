@@ -1,10 +1,18 @@
 function ActiveStatus({status}){
     let color = "";
     status === 'Active' ? color = "green" : color = "red";  
-  
+
+    const styles={
+      display: 'inline-block',
+      borderRadius: '50%',
+      backgroundColor:color,
+      width: '13px',
+      height:'13px'
+    };
+
     return (
         <>
-          <div><span style={{height:'13px', width: '13px', backgroundColor:color, borderRadius: '50%', display: 'inline-block'}}></span>{' '+status}</div>
+          <div><span style={styles}></span>{' '+status}</div>
         </>
       );
 }
